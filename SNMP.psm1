@@ -10,6 +10,7 @@
 #
 #     applies the methods of the olePrn.OleSNMP Com-Object and wraps them into 4 easy to use CMDlets:
 #         Get-Snmp, Get-SnmpValue, Get-SnmpWalk, Get-SnmpWalkValue
+#     (uses: https://docs.microsoft.com/en-us/windows-hardware/drivers/print/isnmp-methods)
 #
 ########################################################################################################################
 #
