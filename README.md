@@ -1,6 +1,6 @@
 # Powershell Modules
 
-Please refer to [msdn](https://msdn.microsoft.com/en-us/library/dd878350(v=vs.85).aspx) for the correct installation of powershell modules. Also have a look at the specific modules for dependencies like the minimum version of powershell.
+Please refer to [activedirectorypro.com](https://activedirectorypro.com/install-powershell-modules/) for the correct installation of powershell modules. Also have a look at the specific modules for dependencies like the minimum version of powershell. Use [bug report](https://github.com/johanneslatzel/powershellmodules/issues/new?assignees=&labels=&template=bug_report.md&title=) to report bugs or contact@nuttercode.de to ask questions. 
 
 ## PRTG
 
