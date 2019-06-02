@@ -8,7 +8,7 @@
 #
 # Description:
 #
-#     
+#     provides CMDlets to create PRTG sensor objects, add channels, and convert them to PRTG exexml sensor output
 #
 ########################################################################################################################
 #
