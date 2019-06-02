@@ -4,12 +4,19 @@ Have a look at the specific modules for dependencies like the minimum version of
 
 ## Nuttercode-PRTG
 
-Installation in Powershell: `Install-Module Nuttercode-PRTG`
+Installation in Powershell:
+```powershell
+Install-Module Nuttercode-PRTG
+```
+
 
 The Nuttercode-PRTG module provides some small CMDlets to create PRTG [exe/xml sensor](https://www.paessler.com/manuals/prtg/custom_sensors#exe_script) sensor results in Powershell. Please refer to [advanced custom prtg sensors](https://www.paessler.com/manuals/prtg/exe_script_advanced_sensor) for more information.
 
 ## Nuttercode-SNMP
 
-Installation in Powershell: `Install-Module Nuttercode-SNMP`
+Installation in Powershell:
+```powershell
+Install-Module Nuttercode-SNMP
+```
 
 The Nuttercode-SNMP module provides easy to use CMDlets for querying Snmp data from a local or remote maschine with powershell.
