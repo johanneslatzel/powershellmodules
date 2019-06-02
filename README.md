@@ -1,6 +1,13 @@
 # Powershell Modules
 
-Have a look at the specific modules for dependencies like the minimum version of powershell. Use [bug report](https://github.com/johanneslatzel/powershellmodules/issues/new?assignees=&labels=&template=bug_report.md&title=) to report bugs or contact@nuttercode.de to ask questions. 
+Have a look at the specific modules for dependencies like the minimum version of powershell. Use [bug report](https://github.com/johanneslatzel/powershellmodules/issues/new?assignees=&labels=&template=bug_report.md&title=) to report bugs or contact@nuttercode.de to ask questions.
+
+Available modules:
+
+| name | tested |
+| :-: | :-: |
+| Nuttercode-PRTG | 🔴 |
+| Nuttercode-SNMP | 🔴 |
 
 ## Nuttercode-PRTG
 
