@@ -2,7 +2,7 @@
 #
 # Author: Johannes B. Latzel
 # 
-# Version: 2019.05.30
+# Version: 2019.06.09
 #
 ########################################################################################################################
 #
@@ -60,7 +60,6 @@ function Get-SnmpWalk() {
         [SNMPResult]::new(".$($comSnmp.OIDFromString($($result[0, $a])) -join ".")", "$($result[1, $a])")
     }
 }
-export-modulemember -function Get-SNMPWalk
 
 
 function Get-SnmpWalkValue() {
@@ -78,7 +77,6 @@ function Get-SnmpWalkValue() {
         }
     }
 }
-export-modulemember -function Get-SNMPWalkValue
 
 
 function Get-Snmp() {
@@ -97,7 +95,6 @@ function Get-Snmp() {
     }
     [SNMPResult]::new($Oid, $result)
 }
-export-modulemember -function Get-SNMP
 
 
 function Get-SnmpValue() {
@@ -112,4 +109,3 @@ function Get-SnmpValue() {
     }
 	return ""
 }
-export-modulemember -function Get-SNMPValue
