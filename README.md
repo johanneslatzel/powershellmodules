@@ -6,8 +6,8 @@ Available modules:
 
 | name | tested |
 | :-: | :-: |
-| Nuttercode-PRTG | 🔴 |
-| Nuttercode-SNMP | ✅ |
+| Nuttercode-PRTG | ✅ |
+| Nuttercode-SNMP | 🔴 |
 
 ## Nuttercode-PRTG
 
