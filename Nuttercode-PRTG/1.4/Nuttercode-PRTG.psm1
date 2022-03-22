@@ -92,72 +92,57 @@ function ConvertTo-PrtgXml() {
 	)
 	Process {
 		[System.Text.StringBuilder]$builder = [System.Text.StringBuilder]::new(500)
-		$builder.Append("<prtg>")
+		$builder = $builder.Append("<prtg>")
 		foreach ( $channel in $Sensor.ChannelList ) {
-			$builder.Append("<result><channel>")
-			$builder.Append($channel.Name)
-			$builder.Append("</channel><value>")
-			$builder.Append($channel.Value)
-			$builder.Append("</value><unit>")
-			$builder.Append($channel.Unit)
-			$builder.Append("</unit>")
+			$builder = $builder.Append("<result><channel>").Append($channel.Name).Append("</channel><value>").
+			Append($channel.Value).Append("</value><unit>").Append($channel.Unit).Append("</unit>")
 			if ($channel.unit -eq [PrtgChannelUnit]::Custom) {
-				$builder.Append("<customunit>")
-				$builder.Append($channel.CustomUnit)
-				$builder.Append("</customunit>")
+				
+				$builder = $builder.Append("<customunit>").Append($channel.CustomUnit).Append("</customunit>")
 			}
-			$builder.Append("<mode>")
-			$builder.Append($channel.Mode)
-			$builder.Append("</mode>")
+			$builder = $builder.Append("<mode>").Append($channel.Mode).Append("</mode>")
 			if ($channel.IsFloat) {
-				$builder.Append("<float>1</float>")
+				
+				$builder = $builder.Append("<float>1</float>")
 			}
 			if ( $channel.Limit ) {
 				if ( $channel.Limit.ErrorMin ) {
-					$builder.Append("<limitminerror>")
-					$builder.Append($channel.Limit.ErrorMin)
-					$builder.Append("</limitminerror>")
+					
+					$builder = $builder.Append("<limitminerror>").Append($channel.Limit.ErrorMin).
+					Append("</limitminerror>")
 				}
 				if ( $channel.Limit.WarningMin ) {
-					$builder.Append("<limitminwarning>")
-					$builder.Append($channel.Limit.WarningMin)
-					$builder.Append("</limitminwarning>")
+					
+					$builder = $builder.Append("<limitminwarning>").Append($channel.Limit.WarningMin).
+					Append("</limitminwarning>")
 				}
 				if ( $channel.Limit.ErrorMax ) {
-					$builder.Append("<limitmaxerror>")
-					$builder.Append($channel.Limit.ErrorMax)
-					$builder.Append("</limitmaxerror>")
+					
+					$builder = $builder.Append("<limitmaxerror>").Append($channel.Limit.ErrorMax).
+					Append("</limitmaxerror>")
 				}
 				if ( $channel.Limit.WarningMax ) {
-					$builder.Append("<limitmaxwarning>")
-					$builder.Append($channel.Limit.WarningMax)
-					$builder.Append("</limitmaxwarning>")
+					$builder = $builder.Append("<limitmaxwarning>").Append($channel.Limit.WarningMax).
+					Append("</limitmaxwarning>")
 				}
 				# assume it has any limit since a limit object is present
-				$builder.Append("<limitmode>1</limitmode>")
+				$builder = $builder.Append("<limitmode>1</limitmode>")
 			}
 			else {
-				$builder.Append("<limitmode>0</limitmode>")
+				$builder = $builder.Append("<limitmode>0</limitmode>")
 			}
 			if ( $Channel.ValueLookupId ) {
-				$builder.Append("<ValueLookup>")
-				$builder.Append($Channel.ValueLookupId)
-				$builder.Append("</ValueLookup>")
+				$builder = $builder.Append("<ValueLookup>").Append($Channel.ValueLookupId).Append("</ValueLookup>")
 			}
-			$builder.Append("</result>")
+			$builder = $builder.Append("</result>")
 		}
 		if ( $Sensor.ErrorCode ) {
-			$builder.Append("<error>")
-			$builder.Append($Sensor.ErrorCode)
-			$builder.Append("</error>")
+			$builder = $builder.Append("<error>").Append($Sensor.ErrorCode).Append("</error>")
 		}
 		if ( $Sensor.Text ) {
-			$builder.Append("<text>")
-			$builder.Append($Sensor.Text)
-			$builder.Append("</text>")
+			$builder = $builder.Append("<text>").Append($Sensor.Text).Append("</text>")
 		}
-		$builder.Append("</prtg>")
-		return $builder.ToString()
+		return $builder.Append("</prtg>").ToString()
 	}
 }
 
@@ -335,5 +320,34 @@ function Set-PrtgSensorId() {
 	Process {
 		$Sensor.Id = $Id
 		return $Sensor
+	}
+}
+
+function Set-PrtgSensorError() {
+	[cmdletbinding()]
+	param(  
+		[Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][PrtgSensor]$sensor,
+		[Parameter(Position = 1, Mandatory = $true)][int]$ErrorCode,
+		[Parameter(Position = 2, Mandatory = $false)][string]$Text = "",
+		[Parameter(Position = 3, Mandatory = $false)][System.Management.Automation.ErrorRecord]$ErrorRecord = $null
+	)
+	Process {
+		$sensor.ErrorCode = $ErrorCode
+		$localText = ""
+		if( $Text ) {
+			$localText = $Text
+		}
+		if( $ErrorRecord ) {
+			if( $ErrorRecord.ErrorDetails -and $ErrorRecord.ErrorDetails.Message ) {
+				$localText += ", ErrorDetails: " + $ErrorRecord.ErrorDetails.Message
+			}
+			elseif( $ErrorRecord.Exception -and $ErrorRecord.Exception.Message ) {
+				$localText += ", Exception: " + $ErrorRecord.Exception.Message
+			}
+		}
+		if( $localText ) {
+			$sensor.Text = $localText
+		}
+		return $sensor
 	}
 }
