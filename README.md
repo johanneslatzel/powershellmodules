@@ -4,10 +4,10 @@ Have a look at the specific modules for dependencies like the minimum version of
 
 Available modules:
 
-| name | tested | functions |
-| :-: | :-: | :-: |
-| Nuttercode-Prtg | ✅ | ConvertTo-PrtgXml, Add-PrtgChannel, New-PrtgSensor, Set-PrtgSensorText, Push-PrtgSensor, Export-PrtgChannelData, Save-PrtgSensorChannels, Invoke-PrtgChannelSubtraction, Set-PrtgSensorId, Set-PrtgSensorError |
-| Nuttercode-Snmp | ✅ | New-SnmpTarget, Invoke-SnmpGet, Invoke-SnmpGetValue, Invoke-SnmpWalk, Invoke-SnmpWalkValue, ConvertFrom-SnmpDateAndTime |
+| name| version | tested | functions |
+| :-: | :-: | :-: | :-: |
+| Nuttercode-Prtg | 1.4 | ✅ | ConvertTo-PrtgXml, Add-PrtgChannel, New-PrtgSensor, Set-PrtgSensorText, Push-PrtgSensor, Export-PrtgChannelData, Save-PrtgSensorChannels, Invoke-PrtgChannelSubtraction, Set-PrtgSensorId, Set-PrtgSensorError |
+| Nuttercode-Snmp | 1.0 | ✅ | New-SnmpTarget, Invoke-SnmpGet, Invoke-SnmpGetValue, Invoke-SnmpWalk, Invoke-SnmpWalkValue, ConvertFrom-SnmpDateAndTime |
 
 ## Nuttercode-PRTG
 
