@@ -221,7 +221,7 @@ function Push-PrtgSensor() {
 		Write-Verbose "ProbeName: $ProbeName"
 		Write-Verbose "Port: $Port"
 		Write-Verbose "Method: $Method"
-		$content = [uri]::EscapeDataString(($Sensor | Convert-PrtgSensorToXML))
+		$content = [uri]::EscapeDataString(($Sensor | ConvertTo-PrtgXml))
 		Write-Verbose "content: $content"
 		if ( $Method -eq [Microsoft.PowerShell.Commands.WebRequestMethod]::Get ) {
 			$uri = "http://$($ProbeName):$Port/$($Guid)?content=$content"
