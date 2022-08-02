@@ -327,7 +327,7 @@ function Set-PrtgSensorError() {
 	[cmdletbinding()]
 	param(  
 		[Parameter(Position = 0, Mandatory = $true, ValueFromPipeline = $true)][PrtgSensor]$sensor,
-		[Parameter(Position = 1, Mandatory = $true)][int]$ErrorCode,
+		[Parameter(Position = 1, Mandatory = $false)][int]$ErrorCode = 1,
 		[Parameter(Position = 2, Mandatory = $false)][string]$Text = "",
 		[Parameter(Position = 3, Mandatory = $false)][System.Management.Automation.ErrorRecord]$ErrorRecord = $null
 	)
