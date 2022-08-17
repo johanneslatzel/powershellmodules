@@ -170,7 +170,7 @@ function Add-PrtgChannel() {
 		$channel.ValueLookupId = $ValueLookupId
 		$channel.IsFloat = $Float
 		$channel.CustomUnit = $CustomUnit
-		if( $WarningMin -or $WarningMax -or $ErrorMin -or $ErrorMax ) {
+		if ( $WarningMin -or $WarningMax -or $ErrorMin -or $ErrorMax ) {
 			$channel.Limit = [PrtgChannelLimit]::new($WarningMin, $WarningMax, $ErrorMin, $ErrorMax)
 		}
 		$garbage = $sensor.ChannelList.Add($channel)
@@ -247,7 +247,7 @@ Function Export-PrtgChannelData() {
 	Process {
 		[System.Text.StringBuilder]$builder = [System.Text.StringBuilder]::new(500)
 		$builder.Append((Get-Date))
-		foreach( $channel in $Sensor.ChannelList ) {
+		foreach ( $channel in $Sensor.ChannelList ) {
 			$builder.Append("`n")
 			$builder.Append($channel.name)
 			$builder.Append($CSV_SEPERATOR_CHAR)
@@ -334,18 +334,18 @@ function Set-PrtgSensorError() {
 	Process {
 		$sensor.ErrorCode = $ErrorCode
 		$localText = ""
-		if( $Text ) {
+		if ( $Text ) {
 			$localText = $Text
 		}
-		if( $ErrorRecord ) {
-			if( $ErrorRecord.ErrorDetails -and $ErrorRecord.ErrorDetails.Message ) {
+		if ( $ErrorRecord ) {
+			if ( $ErrorRecord.ErrorDetails -and $ErrorRecord.ErrorDetails.Message ) {
 				$localText += ", ErrorDetails: " + $ErrorRecord.ErrorDetails.Message
 			}
-			elseif( $ErrorRecord.Exception -and $ErrorRecord.Exception.Message ) {
+			elseif ( $ErrorRecord.Exception -and $ErrorRecord.Exception.Message ) {
 				$localText += ", Exception: " + $ErrorRecord.Exception.Message
 			}
 		}
-		if( $localText ) {
+		if ( $localText ) {
 			$sensor = $sensor | Set-PrtgSensorText -Text $localText
 		}
 		return $sensor
