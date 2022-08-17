@@ -201,7 +201,7 @@ function Set-PrtgSensorText() {
 		[Parameter(Position = 1, Mandatory = $false)][string]$Text = ""
 	)
 	Process {
-		$sensor.Text = $Text
+		$sensor.Text = $Text.Replace("{", "").Replace("}", "")
 		return $sensor
 	}
 }
@@ -346,7 +346,7 @@ function Set-PrtgSensorError() {
 			}
 		}
 		if( $localText ) {
-			$sensor.Text = $localText
+			$sensor = $sensor | Set-PrtgSensorText -Text $localText
 		}
 		return $sensor
 	}
